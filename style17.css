@@ -1,0 +1,172 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    text-align: center;
+    margin: 20px 0;
+    color: #2f4f4f;
+    border-bottom: 2px solid #2f4f4f;
+    padding-bottom: 10px;
+}
+
+.feedback-container {
+    text-align: left;
+    margin-bottom: 20px;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.feedback-textbox {
+    width: 60%;
+    height: 50px;
+    padding: 10px;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.send-button {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+}
+
+.container {
+    display: inline-block;
+    width: calc(50% - 2.5px);
+    background-color: rgba(128, 128, 128, 0.2);
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    cursor: pointer;
+}
+
+.container.collapsed {
+    height: 30px;
+    padding: 5px;
+}
+
+.container-title {
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.table th.exercise-title {
+    background-color: #cc5500;
+    color: white;
+}
+
+.solutions-cell {
+    width: 100%;
+}
+
+.divider {
+    width: 100%;
+    border-bottom: 2px solid #ccc;
+    margin: 20px 0;
+}
+
+.problem-container {
+    margin: 20px 5px 0 0;
+    width: calc(50% - 2.5px);
+    text-align: left;
+}
+
+.problem-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.steps-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.steps-table th,
+.steps-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.steps-table .step-number {
+    width: 100px;
+}
+
+.steps-textbox {
+    width: calc(100% - 20px);
+    height: 30px;
+    padding: 5px;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Card flipping styles */
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    display: inline-block;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, color 0.3s;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.card.hidden {
+    background-color: #ccc;
+    color: #ccc;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    text-align: center;
+}

@@ -1,0 +1,134 @@
+body {
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center;
+    padding: 0 5px; /* Ensure padding on each side */
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Georgia', serif; /* Use a serif font for a formal look */
+    text-align: center;
+    margin: 20px 0;
+    color: #2f4f4f; /* Dark slate gray for a professional look */
+    border-bottom: 2px solid #2f4f4f; /* Add an underline */
+    padding-bottom: 10px;
+}
+
+.feedback-container {
+    text-align: left; /* Align text left */
+    margin-bottom: 20px;
+    width: 100%;
+    padding-left: 5px; /* Ensure it starts 5px from the left edge */
+}
+
+.feedback-textbox {
+    width: 60%;
+    height: 50px;
+    padding: 10px;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.send-button {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 5px; /* Space between containers */
+}
+
+.container {
+    display: inline-block;
+    width: calc(50% - 2.5px); /* Adjust width to fill half the screen minus spacing */
+    background-color: rgba(128, 128, 128, 0.2); /* Darker shade of grey */
+    border: 2px solid #ccc;
+    border-radius: 15px; /* Curved edges */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word; /* Ensures text wraps */
+    overflow-wrap: break-word; /* Ensures text wraps */
+    white-space: normal; /* Allows text to wrap to the next line */
+}
+
+.table th.exercise-title {
+    background-color: #cc5500; /* Light burnt orange */
+    color: white;
+}
+
+.solutions-cell {
+    width: 100%; /* Ensure Solutions column is the widest */
+}
+
+.divider {
+    width: 100%;
+    border-bottom: 2px solid #ccc;
+    margin: 20px 0;
+}
+
+.problem-container {
+    margin: 20px 5px 0 5px;
+    width: 100%;
+}
+
+.problem-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.steps-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.steps-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.steps-table th,
+.steps-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.steps-table .step-number {
+    width: 100px; /* Adjust based on content */
+}
+
+.steps-textbox {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}

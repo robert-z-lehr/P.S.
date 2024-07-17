@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability and Statistics Civil Engineering Reference Guide</title>
+
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            width: 200px;
+            text-align: center;
+            display: inline-block;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s, color 0.3s;
+            word-wrap: break-word; /* Ensures text wraps */
+        }
+        .card.hidden {
+            background-color: #ccc;
+            color: #ccc;
+        }
+        .button-container {
+            margin: 10px;
+        }
+        .row {
+            display: flex;
+            justify-content: flex-start; /* Justify left */
+            margin: 10px;
+            gap: 20px; /* 20px spacing between columns */
+        }
+        .column-title {
+            font-weight: bold;
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            width: 200px;
+            text-align: center;
+            word-wrap: break-word; /* Ensures text wraps */
+        }
+        .exercise-title {
+            width: 300px; /* Thicker/wider column for Exercises */
+        }
+        .page-title {
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .feedback-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feedback-textbox {
+            width: 80%;
+            height: 50px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .problem-container {
+            margin-left: 50px;
+            width: 300px;
+        }
+        .problem-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .steps-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .steps-textbox {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+
+    <script>
+        var columnFlips = {};
+
+        function flipColumn(columnIndex) {
+            var cards = document.querySelectorAll(`.column${columnIndex}`);
+            
+            if (!columnFlips[columnIndex]) {
+                columnFlips[columnIndex] = 0;
+            }
+
+            columnFlips[columnIndex] += 1;
+            var shouldBeHidden = columnFlips[columnIndex] % 2 === 0;
+
+            cards.forEach(card => {
+                if (shouldBeHidden) {
+                    card.classList.add('hidden');
+                } else {
+                    card.classList.remove('hidden');
+                }
+            });
+
+            MathJax.typeset(); // Re-render MathJax after toggling visibility
+        }
+
+        function flipCard(card) {
+            card.classList.toggle('hidden');
+            MathJax.typeset(); // Re-render MathJax after toggling visibility
+        }
+    </script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="page-title">Probability and Statistics Civil Engineering Reference Guide</div>
+    <div class="feedback-container">
+        <textarea class="feedback-textbox" placeholder="Enter your feedback here..."></textarea>
+    </div>
+
+    <div class="row">
+        <button class="column-title" onclick="flipColumn(1)">Term/Concept</button>
+        <button class="column-title" onclick="flipColumn(2)">Definition</button>
+        <button class="column-title" onclick="flipColumn(3)">Notation</button>
+        <button class="column-title" onclick="flipColumn(4)">Use Case</button>
+        <button class="column-title" onclick="flipColumn(5)">Civil Engineering Subdomain</button>
+        <button class="column-title exercise-title" onclick="flipColumn(6)">Exercises!</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Random Variable</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A variable that takes on different values based on the outcomes of a random phenomenon.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \) for both discrete and continuous random variables.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: The height of a person.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the probability of a random variable.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">PMF (Probability Mass Function)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A function that gives the probability that a discrete random variable is exactly equal to some value.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( P(X=x) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Finding the probability of rolling a 3 on a fair six-sided die.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Probability</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate PMF for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">PDF (Probability Density Function)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A function that describes the likelihood of a continuous random variable to take on a particular value.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( f(x) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Determining the likelihood of a measurement falling within a specific range in a normal distribution.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Probability</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate PDF for a given data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">CDF (Cumulative Distribution Function)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A function that gives the probability that a random variable is less than or equal to a certain value.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( F(x) = P(X \leq x) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Probability of scoring below 80 in an exam.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate CDF for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Mean</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The average value of a set of numbers or a random variable.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \mu \text{ or } E(X) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Average height of students in a class.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the mean of a data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Variance</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A measure of the dispersion or spread of a set of values or a random variable.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \sigma^2 \text{ or } Var(X) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Variability in test scores in a class.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the variance of a data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Standard Deviation</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The square root of the variance, indicating the average amount by which values differ from the mean.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \sigma \text{ or } SD(X) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: The standard deviation of weights of a group of people.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the standard deviation of a data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Covariance</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A measure of the joint variability of two random variables.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \text{Cov}(X, Y) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Covariance between height and weight of individuals.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the covariance between two variables.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Correlation</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A standardized measure of the relationship between two random variables, ranging from -1 to 1.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \rho \text{ or } \text{Corr}(X, Y) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Correlation between study hours and exam scores.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the correlation coefficient for a given data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Median</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The middle value in a dataset when arranged in ascending or descending order.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \text{Med} \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Median compressive strength of concrete samples.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the median of a data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Mode</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The value that appears most frequently in a dataset.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \text{Mode} \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Most common soil type found in a construction site survey.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Geotechnical Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the mode of a data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Range</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The difference between the maximum and minimum values in a dataset.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \text{Range} \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Range of pollutant concentrations in air samples.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Environmental Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the range of a data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Quartiles</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">Values that divide a dataset into four equal parts.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( Q1, Q2, Q3 \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Quartiles of project completion times.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Construction</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the quartiles of a data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Interquartile Range (IQR)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The range between the first quartile (Q1) and the third quartile (Q3).</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \text{IQR} \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: IQR of soil moisture content measurements.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Geotechnical Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the interquartile range of a data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Expected Value (E[X])</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The mean or average value of a random variable.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( E[X], \mu \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Expected number of vehicles at an intersection per hour.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the expected value for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Binomial Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A discrete distribution representing the number of successes in a fixed number of independent trials.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{Bin}(n, p) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Number of defective items in a batch of 100.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Quality Control</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the binomial distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Poisson Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A discrete distribution expressing the probability of a given number of events occurring in a fixed interval of time or space.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{Poisson}(\lambda) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Number of vehicles arriving at a toll booth per hour.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the Poisson distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Normal Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A continuous distribution that is symmetrical around the mean, describing many natural phenomena.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim N(\mu, \sigma^2) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Distribution of material strengths.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Structural Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the normal distribution for a given data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Exponential Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A continuous distribution representing the time between events in a Poisson process.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{Exponential}(\lambda) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Time between vehicle arrivals at a toll booth.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the exponential distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Geometric Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A discrete distribution representing the number of trials until the first success.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{Geom}(p) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Number of items inspected until the first defect is found.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Quality Control</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the geometric distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Negative Binomial Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A discrete distribution representing the number of trials until a specified number of successes occur.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{NB}(r, p) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Number of attempts to achieve a specific quality level in concrete mixing.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Construction</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the negative binomial distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Uniform Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A distribution where all outcomes are equally likely.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{Uniform}(a, b) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Randomly selecting a point along a river for sampling.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Environmental Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the uniform distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Lognormal Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A continuous distribution of a random variable whose logarithm is normally distributed.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{Lognormal}(\mu, \sigma^2) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Modeling the distribution of construction costs.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Construction</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the lognormal distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Weibull Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A continuous distribution used for modeling life data, reliability, and failure times.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{Weibull}(\lambda, k) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Time to failure of a mechanical component.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Structural Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the Weibull distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Gamma Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A continuous distribution used to model waiting times or the time until an event occurs a certain number of times.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{Gamma}(\alpha, \beta) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Modeling the time between major flood events.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Hydrology</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the gamma distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Beta Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A continuous distribution defined on the interval [0, 1], often used to model proportions and probabilities.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \sim \text{Beta}(\alpha, \beta) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Proportion of land area affected by erosion.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Environmental Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the beta distribution for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Null Hypothesis (H0)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A statement that there is no effect or no difference, to be tested against an alternative hypothesis.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( H_0 \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Testing if the average travel time on two different routes is the same.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Formulate a null hypothesis for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Alternative Hypothesis (H1 or Ha)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A statement that there is an effect or a difference.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( H_1 \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Testing if the average travel time on one route is less than on another.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Formulate an alternative hypothesis for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">p-value</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The probability of obtaining test results at least as extreme as the results actually observed, under the assumption that the null hypothesis is true.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( p \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: p-value in testing if the defect rate in a new batch of materials is lower than the historical rate.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Quality Control</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the p-value for a given scenario.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Confidence Interval (CI)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A range of values within which there is a specified probability that the true parameter value lies.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \text{CI} \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: 95% confidence interval for the mean strength of concrete.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Construction</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the confidence interval for a given data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Significance Level (α)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The probability of rejecting the null hypothesis when it is actually true, typically set at 0.05 or 5%.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \alpha \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Significance level in testing the increase in annual rainfall.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Hydrology</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Choose a significance level for a given hypothesis test.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">t-Distribution</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A probability distribution used in hypothesis testing for small sample sizes.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( t \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: t-test for the mean soil density based on a small sample.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Geotechnical Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Conduct a t-test for a given data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Simple Linear Regression</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A method to model the relationship between a dependent variable and an independent variable by fitting a linear equation.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( y = \beta_0 + \beta_1 x + \epsilon \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Modeling the relationship between traffic volume and road wear.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Conduct a simple linear regression for a given data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Multiple Linear Regression</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">An extension of simple linear regression with more than one independent variable.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Modeling construction costs based on multiple factors like material cost, labor cost, and project duration.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Construction</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Conduct a multiple linear regression for a given data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Correlation Coefficient (r)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A measure of the strength and direction of the linear relationship between two variables.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( r \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Correlation between rainfall and soil erosion rates.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Environmental Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the correlation coefficient for a given data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Coefficient of Determination (R²)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A measure of the proportion of variance in the dependent variable that is predictable from the independent variable(s).</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( R^2 \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: R² value in a model predicting traffic congestion from vehicle count.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the coefficient of determination for a given data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Residuals</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The differences between observed and predicted values in a regression model.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( e_i \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Residuals in a model predicting stress levels in bridge components.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Structural Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the residuals for a given regression model.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Robustness</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The quality of a statistical method that remains effective under a variety of conditions, especially when assumptions are violated.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Robustness of a control chart in detecting defects despite changes in production process.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Quality Control</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Evaluate the robustness of a given statistical method.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Mathematical Tractability</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The ease with which a mathematical problem can be solved analytically or numerically.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Tractability of a traffic flow model in a large urban area.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Assess the tractability of a given mathematical model.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Desirable Statistical Properties</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">Attributes of statistical methods that make them useful, such as unbiasedness, consistency, and efficiency.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Desirable properties of a flood prediction model.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Hydrology</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Evaluate the statistical properties of a given method.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Theoretical Justification</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The rigorous mathematical reasoning that supports the use of a statistical method.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Theoretical justification for using a specific soil compaction test.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Geotechnical Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Provide theoretical justification for a given method.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Efficiency</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The degree to which a statistical estimator makes the best use of available data, often measured by the variance of the estimator.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Efficiency of an estimator predicting load-bearing capacity of beams.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Structural Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the efficiency of a given estimator.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Bias</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The difference between the expected value of an estimator and the true value of the parameter being estimated.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Bias in estimates of pollutant levels from air quality models.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Environmental Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Evaluate the bias of a given estimator.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Linearity</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The assumption that the relationship between the independent and dependent variables is linear.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Linearity assumption in modeling the relationship between speed and fuel consumption.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Assess the linearity of a given model.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Independence</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The assumption that the observations in the dataset are independent of each other.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Independence of observations in a study of project durations across different sites.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Construction</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Test the independence of observations in a data set.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Homoscedasticity</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The assumption that the variance of the errors is constant across all levels of the independent variable.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Homoscedasticity in a regression model predicting soil contamination levels.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Environmental Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Test the homoscedasticity in a given model.</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Normally Distributed Errors</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The assumption that the residuals (errors) of the regression model are normally distributed.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Normality of errors in a model predicting material fatigue.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Structural Engineering</button>
+        <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Test the normality of errors in a regression model.</button>
+    </div>
+
+    <div class="problem-container">
+        <div class="problem-title">Problem of the Day</div>
+        <div class="card">The height of students in a school is normally distributed with a mean of 65 inches and a standard deviation of 3 inches. What is the probability that a randomly selected student is taller than 68 inches?</div>
+        <div class="steps-title">Steps to Solve the Problem</div>
+        <textarea class="steps-textbox" placeholder="Step 1"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 2"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 3"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 4"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 5"></textarea>
+    </div>
+</body>
+
+</html>

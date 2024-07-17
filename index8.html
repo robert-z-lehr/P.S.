@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability and Statistics Civil Engineering Reference Guide</title>
+    <link rel="stylesheet" href="style8.css">
+    <script>
+        var columnFlips = {};
+
+        function flipColumn(columnIndex) {
+            var cards = document.querySelectorAll(`.column${columnIndex}`);
+            
+            if (!columnFlips[columnIndex]) {
+                columnFlips[columnIndex] = 0;
+            }
+
+            columnFlips[columnIndex] += 1;
+            var shouldBeHidden = columnFlips[columnIndex] % 2 === 0;
+
+            cards.forEach(card => {
+                if (shouldBeHidden) {
+                    card.classList.add('hidden');
+                } else {
+                    card.classList.remove('hidden');
+                }
+            });
+
+            MathJax.typeset(); // Re-render MathJax after toggling visibility
+        }
+
+        function flipCard(card) {
+            card.classList.toggle('hidden');
+            MathJax.typeset(); // Re-render MathJax after toggling visibility
+        }
+    </script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="page-title">Probability and Statistics Civil Engineering Reference Guide</div>
+    <div class="feedback-container">
+        <textarea class="feedback-textbox" placeholder="Enter your feedback here..."></textarea>
+    </div>
+
+    <div class="beveled-box">
+        <div class="row">
+            <div class="column-container">
+                <button class="column-title" onclick="flipColumn(1)">Term/Concept</button>
+            </div>
+            <div class="column-container">
+                <button class="column-title" onclick="flipColumn(2)">Definition</button>
+            </div>
+            <div class="column-container">
+                <button class="column-title" onclick="flipColumn(3)">Notation</button>
+            </div>
+            <div class="column-container">
+                <button class="column-title" onclick="flipColumn(4)">Use Case</button>
+            </div>
+            <div class="column-container vertical-separator">
+                <button class="column-title" onclick="flipColumn(5)">Civil Engineering Subdomain</button>
+            </div>
+            <div class="column-container">
+                <button class="column-title exercise-title" onclick="flipColumn(6)">EXERCISES!</button>
+            </div>
+            <div class="column-container">
+                <button class="column-title" onclick="flipColumn(7)">Solutions</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column-container">
+                <button class="card column1" onclick="flipCard(this)">Random Variable</button>
+            </div>
+            <div class="column-container">
+                <button class="card column2 hidden" onclick="flipCard(this)">A variable that takes on different values based on the outcomes of a random phenomenon.</button>
+            </div>
+            <div class="column-container">
+                <button class="card column3 hidden" onclick="flipCard(this)">\( X \) for both discrete and continuous random variables.</button>
+            </div>
+            <div class="column-container">
+                <button class="card column4 hidden" onclick="flipCard(this)">Example: The height of a person.</button>
+            </div>
+            <div class="column-container vertical-separator">
+                <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+            </div>
+            <div class="column-container">
+                <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Calculate the probability distribution of a random variable.</button>
+            </div>
+            <div class="column-container">
+                <button class="card column7 hidden" onclick="flipCard(this)">TBD</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column-container">
+                <button class="card column1" onclick="flipCard(this)">PMF (Probability Mass Function)</button>
+            </div>
+            <div class="column-container">
+                <button class="card column2 hidden" onclick="flipCard(this)">A function that gives the probability that a discrete random variable is exactly equal to some value.</button>
+            </div>
+            <div class="column-container">
+                <button class="card column3 hidden" onclick="flipCard(this)">\( P(X=x) \)</button>
+            </div>
+            <div class="column-container">
+                <button class="card column4 hidden" onclick="flipCard(this)">Example: Finding the probability of rolling a 3 on a fair six-sided die.</button>
+            </div>
+            <div class="column-container vertical-separator">
+                <button class="card column5 hidden" onclick="flipCard(this)">Probability</button>
+            </div>
+            <div class="column-container">
+                <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Compute the PMF for a given discrete random variable.</button>
+            </div>
+            <div class="column-container">
+                <button class="card column7 hidden" onclick="flipCard(this)">TBD</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column-container">
+                <button class="card column1" onclick="flipCard(this)">Simple Linear Regression</button>
+            </div>
+            <div class="column-container">
+                <button class="card column2 hidden" onclick="flipCard(this)">A method to model the relationship between a dependent variable and an independent variable by fitting a linear equation.</button>
+            </div>
+            <div class="column-container">
+                <button class="card column3 hidden" onclick="flipCard(this)">\( y = \beta_0 + \beta_1 x + \epsilon \)</button>
+            </div>
+            <div class="column-container">
+                <button class="card column4 hidden" onclick="flipCard(this)">Example: Modeling the relationship between traffic volume and road wear.</button>
+            </div>
+            <div class="column-container vertical-separator">
+                <button class="card column5 hidden" onclick="flipCard(this)">Transportation</button>
+            </div>
+            <div class="column-container">
+                <button class="card column6 hidden" onclick="flipCard(this)">Exercise: Perform a simple linear regression on a given dataset.</button>
+            </div>
+            <div class="column-container">
+                <button class="card column7 hidden" onclick="flipCard(this)">TBD</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="problem-container">
+        <div class="problem-title">Problem of the Day</div>
+        <div class="card">The height of students in a school is normally distributed with a mean of 65 inches and a standard deviation of 3 inches. What is the probability that a randomly selected student is taller than 68 inches?</div>
+        <div class="steps-title">Steps to Solve the Problem</div>
+        <textarea class="steps-textbox" placeholder="Step 1"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 2"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 3"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 4"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 5"></textarea>
+    </div>
+</body>
+
+</html>

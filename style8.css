@@ -1,0 +1,136 @@
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    display: inline-block;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, color 0.3s;
+    word-wrap: break-word; /* Ensures text wraps */
+    overflow-wrap: break-word; /* Ensures text wraps */
+    white-space: normal; /* Allows text to wrap to the next line */
+}
+
+.card.hidden {
+    background-color: #ccc;
+    color: #ccc;
+}
+
+.button-container {
+    margin: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: flex-start; /* Justify left */
+    margin: 10px;
+    gap: 10px; /* 10px spacing between columns */
+}
+
+.column-title {
+    font-weight: bold;
+    background-color: #eee;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    word-wrap: break-word; /* Ensures text wraps */
+    overflow-wrap: break-word; /* Ensures text wraps */
+    white-space: normal; /* Allows text to wrap to the next line */
+}
+
+.exercise-title {
+    background-color: #cc5500; /* Light burnt orange */
+    color: white;
+}
+
+.page-title {
+    font-size: 24px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.feedback-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.feedback-textbox {
+    width: 80%;
+    height: 50px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.problem-container {
+    margin-left: 50px;
+    width: 300px;
+}
+
+.problem-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.steps-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.steps-textbox {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Style for the beveled transparent rectangle */
+.beveled-box {
+    background-color: rgba(128, 128, 128, 0.2); /* Darker shade of grey */
+    border: 2px solid #ccc;
+    border-radius: 15px; /* Curved edges */
+    padding: 10px;
+    display: inline-block;
+    width: calc(100% - 20px); /* Adjust width to be 10px wider on each side */
+    margin: 0 auto;
+}
+
+/* Continuous vertical line separator */
+.vertical-separator {
+    border-right: 2px solid #000; /* Black vertical line */
+    margin-right: 10px; /* Space between columns */
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; /* Ensure the same width as cells */
+    text-align: center;
+}
+
+.exercises-solutions-table {
+    display: table;
+    width: 100%;
+}
+
+.exercises-solutions-row {
+    display: table-row;
+}
+
+.exercises-solutions-cell {
+    display: table-cell;
+    width: 200px;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    word-wrap: break-word; /* Ensures text wraps */
+    overflow-wrap: break-word; /* Ensures text wraps */
+    white-space: normal; /* Allows text to wrap to the next line */
+}

@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    justify-content: center;
+    padding: 0 5px; /* Ensure padding on each side */
+}
+
+.container {
+    display: inline-block;
+    width: calc(50% - 2.5px); /* Adjust width to fill half the screen minus spacing */
+    background-color: rgba(128, 128, 128, 0.2); /* Darker shade of grey */
+    border: 2px solid #ccc;
+    border-radius: 15px; /* Curved edges */
+    padding: 10px;
+    margin-right: 5px; /* Space between containers */
+    box-sizing: border-box;
+}
+
+.container:last-of-type {
+    margin-right: 0; /* Remove margin for the last container */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word; /* Ensures text wraps */
+    overflow-wrap: break-word; /* Ensures text wraps */
+    white-space: normal; /* Allows text to wrap to the next line */
+}
+
+.table th.exercise-title {
+    background-color: #cc5500; /* Light burnt orange */
+    color: white;
+}
+
+.solutions-cell {
+    width: 100%; /* Ensure Solutions column is the widest */
+}

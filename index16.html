@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability and Statistics Civil Engineering Reference Guide</title>
+    <link rel="stylesheet" href="style16.css">
+    <script>
+        var columnFlips = {};
+
+        function flipColumn(columnIndex) {
+            var cards = document.querySelectorAll(`.column${columnIndex}`);
+            
+            if (!columnFlips[columnIndex]) {
+                columnFlips[columnIndex] = 0;
+            }
+
+            columnFlips[columnIndex] += 1;
+            var shouldBeHidden = columnFlips[columnIndex] % 2 === 0;
+
+            cards.forEach(card => {
+                if (shouldBeHidden) {
+                    card.classList.add('hidden');
+                } else {
+                    card.classList.remove('hidden');
+                }
+            });
+
+            MathJax.typeset(); // Re-render MathJax after toggling visibility
+        }
+
+        function flipCard(card) {
+            card.classList.toggle('hidden');
+            MathJax.typeset(); // Re-render MathJax after toggling visibility
+        }
+    </script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="page-title">Probability and Statistics Civil Engineering Reference Guide</div>
+    <div class="feedback-container">
+        <textarea class="feedback-textbox" placeholder="Ask a question or provide feedback here..."></textarea>
+        <button class="send-button">Send</button>
+    </div>
+
+    <div class="container-wrapper">
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Term/Concept</th>
+                        <th>Definition</th>
+                        <th>Notation</th>
+                        <th>Use Case</th>
+                        <th>Civil Engineering Subdomain</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Random Variable</td>
+                        <td>A variable that takes on different values based on the outcomes of a random phenomenon.</td>
+                        <td>\( X \) for both discrete and continuous random variables.</td>
+                        <td>Example: The height of a person.</td>
+                        <td>Statistics</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="exercise-title">EXERCISES!</th>
+                        <th colspan="2">Solutions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="5">Exercise: Calculate the probability distribution of a random variable.</td>
+                        <td class="step-number">Step 1</td>
+                        <td class="solutions-cell"><textarea class="steps-textbox"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="step-number">Step 2</td>
+                        <td class="solutions-cell"><textarea class="steps-textbox"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="step-number">Step 3</td>
+                        <td class="solutions-cell"><textarea class="steps-textbox"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="step-number">Step 4</td>
+                        <td class="solutions-cell"><textarea class="steps-textbox"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="step-number">Step 5</td>
+                        <td class="solutions-cell"><textarea class="steps-textbox"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="problem-container">
+        <div class="problem-title">Problem of the Day</div>
+        <table class="steps-table">
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Math</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="step-number">Step 1</td>
+                    <td><textarea class="steps-textbox" placeholder="Step 1"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="step-number">Step 2</td>
+                    <td><textarea class="steps-textbox" placeholder="Step 2"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="step-number">Step 3</td>
+                    <td><textarea class="steps-textbox" placeholder="Step 3"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="step-number">Step 4</td>
+                    <td><textarea class="steps-textbox" placeholder="Step 4"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="step-number">Step 5</td>
+                    <td><textarea class="steps-textbox" placeholder="Step 5"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
