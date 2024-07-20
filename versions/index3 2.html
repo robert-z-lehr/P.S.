@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Engineering Probability and Statistics Reference</title>
+    <link rel="stylesheet" href="styles3.css">
+</head>
+<body>
+
+<h1>Civil Engineering Probability and Statistics Reference</h1>
+
+<table id="quiz-table">
+    <thead>
+        <tr>
+            <th>Concept/Term/Jargon <button class="hide-btn" data-col="0">Hide</button></th>
+            <th>Definition <button class="hide-btn" data-col="1">Hide</button></th>
+            <th>Use Case / Example <button class="hide-btn" data-col="2">Hide</button></th>
+            <th>Relevant Formula(s) <button class="hide-btn" data-col="3">Hide</button></th>
+            <th>Relevant Probability Distribution(s) <button class="hide-btn" data-col="4">Hide</button></th>
+            <th>Sub-Domain in Civil Engineering <button class="hide-btn" data-col="5">Hide</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Table rows go here (omitted for brevity) -->
+        <!-- Example row -->
+        <tr>
+            <td>Union of Events</td>
+            <td>The probability of either of two events occurring</td>
+            <td>Estimating the probability of either of two structural failures</td>
+            <td>$$ P(A \cup B) = P(A) + P(B) - P(A \cap B) $$</td>
+            <td>Binomial, Poisson, Normal</td>
+            <td>Structural Engineering</td>
+        </tr>
+        <tr>
+            <td>Intersection of Events</td>
+            <td>The probability of both events occurring simultaneously</td>
+            <td>Calculating the joint probability of both load and material failures</td>
+            <td>$$ P(A \cap B) = P(A) \cdot P(B) $$</td>
+            <td>Binomial, Poisson</td>
+            <td>Structural Engineering</td>
+        </tr>
+        <tr>
+            <td>Conditional Probability</td>
+            <td>The probability of an event given that another event has occurred</td>
+            <td>Determining the probability of delays given adverse weather</td>
+            <td>$$ P(A\|B) = \frac{P(A \cap B)}{P(B)} $$</td>
+            <td>Binomial, Poisson, Normal</td>
+            <td>Transportation Engineering</td>
+        </tr>
+    </tbody>
+</table>
+
+<button id="next-btn">Next</button>
+
+<div id="answer-section">
+    <input type="text" id="answer-box" placeholder="Type your answer here" style="font-size: 16px;">
+    <button id="reveal-btn">Enter</button>
+</div>
+
+<script src="script3.js"></script>
+<script src="hide3.js"></script>
+
+</body>
+</html>

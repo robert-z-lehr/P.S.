@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Engineering Probability and Statistics Reference</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+
+<h1>Civil Engineering Probability and Statistics Reference</h1>
+
+<table id="quiz-table">
+    <thead>
+        <tr>
+            <th>Concept/Term/Jargon</th>
+            <th>Definition</th>
+            <th>Use Case / Example</th>
+            <th>Relevant Formula(s)</th>
+            <th>Relevant Probability Distribution(s)</th>
+            <th>Sub-Domain in Civil Engineering</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Union of Events</td>
+            <td>The probability of either of two events occurring</td>
+            <td>Estimating the probability of either of two structural failures</td>
+            <td>$$ P(A \cup B) = P(A) + P(B) - P(A \cap B) $$</td>
+            <td>Binomial, Poisson, Normal</td>
+            <td>Structural Engineering</td>
+        </tr>
+        <tr>
+            <td>Intersection of Events</td>
+            <td>The probability of both events occurring simultaneously</td>
+            <td>Calculating the joint probability of both load and material failures</td>
+            <td>$$ P(A \cap B) = P(A) \cdot P(B) $$</td>
+            <td>Binomial, Poisson</td>
+            <td>Structural Engineering</td>
+        </tr>
+        <tr>
+            <td>Conditional Probability</td>
+            <td>The probability of an event given that another event has occurred</td>
+            <td>Determining the probability of delays given adverse weather</td>
+            <td>$$ P(A\|B) = \frac{P(A \cap B)}{P(B)} $$</td>
+            <td>Binomial, Poisson, Normal</td>
+            <td>Transportation Engineering</td>
+        </tr>
+        <tr>
+            <td>Bayes' Theorem</td>
+            <td>A way to update the probability of an event based on new evidence</td>
+            <td>Updating the probability of construction site safety violations based on new evidence</td>
+            <td>$$ P(A\|B) = \frac{P(B\|A) \cdot P(A)}{P(B)} $$</td>
+            <td>Binomial, Poisson, Normal</td>
+            <td>Risk Analysis</td>
+        </tr>
+        <tr>
+            <td>Total Probability Rule</td>
+            <td>The total probability of an event which can be partitioned into a set of disjoint events</td>
+            <td>Assessing overall failure probabilities from multiple independent sources</td>
+            <td>$$ P(B) = \sum_{i} P(B\|A_i) \cdot P(A_i) $$</td>
+            <td>Binomial, Poisson, Normal</td>
+            <td>Structural Engineering</td>
+        </tr>
+        <tr>
+            <td>Complement Rule</td>
+            <td>The probability of the complement of an event is one minus the probability of the event</td>
+            <td>Finding the probability that a material does not fail within its expected lifespan</td>
+            <td>$$ P(A') = 1 - P(A) $$</td>
+            <td>Any</td>
+            <td>Reliability Engineering</td>
+        </tr>
+        <tr>
+            <td>Expectation (Mean)</td>
+            <td>The expected value or mean of a random variable</td>
+            <td>Calculating the average load on a bridge over time</td>
+            <td>$$ E(X) = \sum x \cdot P(X = x) $$</td>
+            <td>Normal, Binomial</td>
+            <td>Structural Engineering</td>
+        </tr>
+        <tr>
+            <td>Variance</td>
+            <td>The measure of the dispersion of a set of values</td>
+            <td>Measuring variability in material strength</td>
+            <td>$$ \sigma^2 = E[(X - \mu)^2] = \sum (x - \mu)^2 \cdot P(X = x) $$</td>
+            <td>Normal, Binomial, Poisson</td>
+            <td>Material Science</td>
+        </tr>
+        <tr>
+            <td>Standard Deviation</td>
+            <td>The square root of the variance, indicating the spread of a set of values</td>
+            <td>Assessing the spread in concrete compressive strength data</td>
+            <td>$$ \sigma = \sqrt{\sigma^2} $$</td>
+            <td>Normal</td>
+            <td>Material Science</td>
+        </tr>
+        <tr>
+            <td>Binomial Distribution</td>
+            <td>Probability distribution summarizing the number of successes in a fixed number of trials</td>
+            <td>Determining the probability of a certain number of defective items in a batch</td>
+            <td>$$ P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} $$</td>
+            <td>Binomial</td>
+            <td>Quality Control, Manufacturing</td>
+        </tr>
+        <tr>
+            <td>Poisson Distribution</td>
+            <td>Probability distribution describing the number of events occurring in a fixed interval of time or space</td>
+            <td>Modeling the number of vehicle arrivals at a toll booth</td>
+            <td>$$ P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} $$</td>
+            <td>Poisson</td>
+            <td>Traffic Engineering</td>
+        </tr>
+        <tr>
+            <td>Exponential Distribution</td>
+            <td>Probability distribution describing the time between events in a Poisson process</td>
+            <td>Estimating the time between successive failures of a component</td>
+            <td>$$ f(x; \lambda) = \lambda e^{-\lambda x} $$</td>
+            <td>Exponential</td>
+            <td>Reliability Engineering</td>
+        </tr>
+        <tr>
+            <td>Normal Distribution</td>
+            <td>Probability distribution that is symmetric about the mean, showing that data near the mean are more frequent</td>
+            <td>Modeling measurement errors in survey data</td>
+            <td>$$ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}} $$</td>
+            <td>Normal</td>
+            <td>Surveying, Geotechnical Engineering</td>
+        </tr>
+        <tr>
+            <td>Uniform Distribution</td>
+            <td>Probability distribution where all outcomes are equally likely</td>
+            <td>Simulating random sampling in material testing</td>
+            <td>$$ f(x) = \frac{1}{b - a} \text{ for } a \leq x \leq b $$</td>
+            <td>Uniform</td>
+            <td>Material Science</td>
+        </tr>
+        <tr>
+            <td>Geometric Distribution</td>
+            <td>Probability distribution of the number of Bernoulli trials needed to get one success</td>
+            <td>Modeling the number of inspections needed to find the first defect</td>
+            <td>$$ P(X = k) = (1-p)^{k-1} p $$</td>
+            <td>Geometric</td>
+            <td>Quality Control, Inspection</td>
+        </tr>
+        <tr>
+            <td>Negative Binomial Distribution</td>
+            <td>Probability distribution of the number of trials needed to achieve a specified number of successes</td>
+            <td>Estimating the number of inspections required to find a specified number of defects</td>
+            <td>$$ P(X = k) = \binom{k + r - 1}{r - 1} (1 - p)^r p^k $$</td>
+            <td>Negative Binomial</td>
+            <td>Quality Control, Inspection</td>
+        </tr>
+        <tr>
+            <td>Weibull Distribution</td>
+            <td>Probability distribution used to model the time to failure of materials and components</td>
+            <td>Modeling the time to failure of materials and components</td>
+            <td>$$ f(x; \lambda, k) = \frac{k}{\lambda} \left( \frac{x}{\lambda} \right)^{k-1} e^{-\left( \frac{x}{\lambda} \right)^k} $$</td>
+            <td>Weibull</td>
+            <td>Reliability Engineering, Material Science</td>
+        </tr>
+        <tr>
+            <td>Lognormal Distribution</td>
+            <td>Probability distribution of a random variable whose logarithm is normally distributed</td>
+            <td>Modeling particle sizes in granular materials</td>
+            <td>$$ f(x; \mu, \sigma) = \frac{1}{x \sigma \sqrt{2\pi}} e^{-\frac{(\ln x - \mu)^2}{2\sigma^2}} $$</td>
+            <td>Lognormal</td>
+            <td>Geotechnical Engineering</td>
+        </tr>
+        <tr>
+            <td>Beta Distribution</td>
+            <td>Probability distribution defined on the interval [0, 1], often used in Bayesian statistics</td>
+            <td>Modeling strength proportions of composite materials</td>
+            <td>$$ f(x; \alpha, \beta) = \frac{x^{\alpha-1} (1-x)^{\beta-1}}{B(\alpha, \beta)} $$</td>
+            <td>Beta</td>
+            <td>Material Science</td>
+        </tr>
+        <tr>
+            <td>Triangular Distribution</td>
+            <td>Probability distribution with a single peak, used for estimating project completion times</td>
+            <td>Estimating project completion times with known minimum, maximum, and most likely durations</td>
+            <td>$$ f(x) = \begin{cases} \frac{2(x - a)}{(b - a)(c - a)} & \text{for } a \leq x \leq c \\ \frac{2(b - x)}{(b - a)(b - c)} & \text{for } c \leq x \leq b \end{cases} $$</td>
+            <td>Triangular</td>
+            <td>Project Management</td>
+        </tr>
+        <tr>
+            <td>Pareto Distribution</td>
+            <td>Probability distribution used to describe the distribution of wealth, sizes of cities, etc.</td>
+            <td>Modeling distribution of extreme loads in structural engineering</td>
+            <td>$$ f(x; \alpha, x_m) = \frac{\alpha x_m^\alpha}{x^{\alpha + 1}} \text{ for } x \geq x_m $$</td>
+            <td>Pareto</td>
+            <td>Structural Engineering</td>
+        </tr>
+        <tr>
+            <td>Gumbel Distribution</td>
+            <td>Probability distribution used to model the distribution of the maximum (or the minimum) of a number of samples</td>
+            <td>Modeling the distribution of extreme values such as maximum wind speeds</td>
+            <td>$$ f(x; \mu, \beta) = \frac{1}{\beta} e^{-(z + e^{-z})} \text{ where } z = \frac{x - \mu}{\beta} $$</td>
+            <td>Gumbel</td>
+            <td>Environmental Engineering, Risk Analysis</td>
+        </tr>
+        <tr>
+            <td>Frechet Distribution</td>
+            <td>Probability distribution used to model extreme values</td>
+            <td>Modeling extreme values in hydrology</td>
+            <td>$$ f(x; \alpha) = \alpha \left( \frac{x_m}{x} \right)^{\alpha + 1} e^{-\left( \frac{x_m}{x} \right)^\alpha} \text{ for } x \geq x_m $$</td>
+            <td>Frechet</td>
+            <td>Hydrological Engineering</td>
+        </tr>
+        <tr>
+            <td>Rayleigh Distribution</td>
+            <td>Probability distribution used for random variables that are non-negative</td>
+            <td>Modeling wave heights and wind speeds</td>
+            <td>$$ f(x; \sigma) = \frac{x}{\sigma^2} e^{-\frac{x^2}{2\sigma^2}} \text{ for } x \geq 0 $$</td>
+            <td>Rayleigh</td>
+            <td>Coastal and Wind Engineering</td>
+        </tr>
+    </tbody>
+</table>
+
+<button id="next-btn">Next</button>
+
+<script src="script2.js"></script>
+
+</body>
+</html>

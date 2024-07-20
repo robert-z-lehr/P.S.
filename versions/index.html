@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability and Statistics Civil Engineering Reference Guide</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            width: 200px;
+            text-align: center;
+            display: inline-block;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .card.hidden {
+            background-color: #ccc;
+            color: #ccc;
+        }
+        .button-container {
+            margin: 10px;
+        }
+        .row {
+            display: flex;
+            justify-content: flex-start;
+            margin: 10px;
+        }
+        .column-title {
+            font-weight: bold;
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            width: 200px;
+            text-align: center;
+        }
+        .page-title {
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .feedback-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feedback-textbox {
+            width: 80%;
+            height: 50px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .problem-container {
+            margin-left: 50px;
+            width: 300px;
+        }
+        .problem-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .steps-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .steps-textbox {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function flipColumn(columnIndex) {
+            var cards = document.querySelectorAll(`.column${columnIndex}`);
+            cards.forEach(card => {
+                card.classList.add('hidden');
+            });
+        }
+
+        function flipCard(card) {
+            card.classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div class="page-title">Probability and Statistics Civil Engineering Reference Guide</div>
+    <div class="feedback-container">
+        <textarea class="feedback-textbox" placeholder="Enter your feedback here..."></textarea>
+    </div>
+
+    <div class="row">
+        <div class="column-title" onclick="flipColumn(1)">Term/Concept</div>
+        <div class="column-title" onclick="flipColumn(2)">Definition</div>
+        <div class="column-title" onclick="flipColumn(3)">Notation</div>
+        <div class="column-title" onclick="flipColumn(4)">Use Case</div>
+        <div class="column-title" onclick="flipColumn(5)">Civil Engineering Subdomain</div>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Random Variable</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A variable that takes on different values based on the outcomes of a random phenomenon.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( X \) for both discrete and continuous random variables.</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: The height of a person.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">PMF (Probability Mass Function)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A function that gives the probability that a discrete random variable is exactly equal to some value.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( P(X=x) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Finding the probability of rolling a 3 on a fair six-sided die.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Probability</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">PDF (Probability Density Function)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A function that describes the likelihood of a continuous random variable to take on a particular value.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( f(x) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Determining the likelihood of a measurement falling within a specific range in a normal distribution.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Probability</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">CDF (Cumulative Distribution Function)</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A function that gives the probability that a random variable is less than or equal to a certain value.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( F(x) = P(X \leq x) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Probability of scoring below 80 in an exam.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Mean</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The average value of a set of numbers or a random variable.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \mu \text{ or } E(X) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Average height of students in a class.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Variance</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A measure of the dispersion or spread of a set of values or a random variable.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \sigma^2 \text{ or } Var(X) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Variability in test scores in a class.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Standard Deviation</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">The square root of the variance, indicating the average amount by which values differ from the mean.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \sigma \text{ or } SD(X) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: The standard deviation of weights of a group of people.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Covariance</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A measure of the joint variability of two random variables.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( Cov(X, Y) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Covariance between height and weight of individuals.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+    </div>
+
+    <div class="row">
+        <button class="card column1" onclick="flipCard(this)">Correlation</button>
+        <button class="card column2 hidden" onclick="flipCard(this)">A standardized measure of the relationship between two random variables, ranging from -1 to 1.</button>
+        <button class="card column3 hidden" onclick="flipCard(this)">\( \rho \text{ or } Corr(X, Y) \)</button>
+        <button class="card column4 hidden" onclick="flipCard(this)">Example: Correlation between study hours and exam scores.</button>
+        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
+    </div>
+
+    <div class="problem-container">
+        <div class="problem-title">Problem of the Day</div>
+        <div class="card">The height of students in a school is normally distributed with a mean of 65 inches and a standard deviation of 3 inches. What is the probability that a randomly selected student is taller than 68 inches?</div>
+        <div class="steps-title">Steps to Solve the Problem</div>
+        <textarea class="steps-textbox" placeholder="Step 1"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 2"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 3"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 4"></textarea>
+        <textarea class="steps-textbox" placeholder="Step 5"></textarea>
+    </div>
+</body>
+</html>

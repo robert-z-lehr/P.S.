@@ -3,184 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Probability and Statistics Civil Engineering Reference Guide</title>
+    <title>P.S. - Applied Probability and Statistics</title>
     <style>
-        .card {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 5px;
-            cursor: pointer;
-            width: 200px;
-            text-align: center;
-            display: inline-block;
-            background-color: #f9f9f9;
-            transition: background-color 0.3s, color 0.3s;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
         }
-        .card.hidden {
-            background-color: #ccc;
-            color: #ccc;
-        }
-        .button-container {
-            margin: 10px;
-        }
-        .row {
-            display: flex;
-            justify-content: flex-start;
-            margin: 10px;
-        }
-        .column-title {
-            font-weight: bold;
-            background-color: #eee;
-            padding: 10px;
-            border: 1px solid #ccc;
-            cursor: pointer;
-            width: 200px;
+        h1, h2 {
             text-align: center;
         }
-        .page-title {
-            font-size: 24px;
-            text-align: center;
+        .divider {
+            border-top: 2px solid #000;
             margin: 20px 0;
         }
-        .feedback-container {
-            text-align: center;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #FFA000; /* Darker richer gold color */
+        }
+        .tags {
+            display: inline-block;
+            background-color: #e0e0e0;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .button-container {
             margin-bottom: 20px;
         }
-        .feedback-textbox {
-            width: 80%;
-            height: 50px;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .problem-container {
-            margin-left: 50px;
-            width: 300px;
-        }
-        .problem-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .steps-title {
-            font-weight: bold;
+        .answer-container {
             margin-top: 20px;
-            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
         }
-        .steps-textbox {
+        .steps-container {
+            width: 48%;
+        }
+        .steps-container textarea, .steps-container input {
             width: 100%;
             height: 100px;
             margin-bottom: 10px;
             padding: 10px;
-            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .add-step-button, .all-done-button, .check-button {
+            display: block;
+            padding: 10px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .add-step-button {
+            width: 100%;
+            background-color: #4CAF50;
+        }
+        .add-step-button:hover {
+            background-color: #45a049;
+        }
+        .all-done-button {
+            width: calc(100% - 50px);
+            background-color: purple;
+        }
+        .check-button {
+            width: 40px;
+            background-color: grey;
+        }
+        .all-done-button:hover {
+            background-color: #9b30ff;
+        }
+        .check-button:hover {
+            background-color: green;
+        }
+        .done-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #FFB700; /* Lighter gold color */
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .done-button:hover {
+            background-color: #FFA000;
+        }
+        .done-button.clicked {
+            background-color: #FFA000;
+        }
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #FFB700 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
+</head>
+<body>
+
+    <h1>P.S.</h1>
+    <h2>P.S. is an applied Probability and Statistics resource used to give you a comprehensive education for all the tools and techniques you will need to use and know to tackle any civil engineering problem.</h2>
+
+    <div class="divider"></div>
+
+    <table id="referenceTable">
+        <thead>
+            <tr>
+                <th>Term/Concept</th>
+                <th>Description</th>
+                <th>Notation/Symbols</th>
+                <th>Use Cases</th>
+                <th>Scopes and Boundaries</th>
+                <th>Relevant Formulas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-term="Descriptive Statistics">
+                <td>Descriptive Statistics</td>
+                <td>Methods for summarizing and describing important features of the data.</td>
+                <td>N/A</td>
+                <td>Calculating mean, standard deviation, creating histograms</td>
+                <td>Focuses on data summarization without generalization</td>
+                <td>Mean: \( \bar{x} = \frac{\sum x}{n} \)</td>
+            </tr>
+            <tr data-term="Inferential Statistics">
+                <td>Inferential Statistics</td>
+                <td>Techniques for generalizing from a sample to a population.</td>
+                <td>N/A</td>
+                <td>Estimating population parameters based on sample data</td>
+                <td>Relies on probability theory to make inferences</td>
+                <td>Confidence Interval: \( \bar{x} \pm t \frac{s}{\sqrt{n}} \)</td>
+            </tr>
+            <tr data-term="Population">
+                <td>Population</td>
+                <td>A well-defined collection of objects of interest in a study.</td>
+                <td>N/A</td>
+                <td>All gelatin capsules produced during a period</td>
+                <td>Involves all objects in the specified group</td>
+                <td>N/A</td>
+            </tr>
+            <tr data-term="Sample">
+                <td>Sample</td>
+                <td>A subset of the population selected in some prescribed manner.</td>
+                <td>N/A</td>
+                <td>Sample of bearings to check manufacturing specifications</td>
+                <td>Must be representative of the population</td>
+                <td>N/A</td>
+            </tr>
+            <tr data-term="Variable">
+                <td>Variable</td>
+                <td>A characteristic whose value may change from one object to another in the population.</td>
+                <td>x, y, z</td>
+                <td>Number of visits to a website, braking distance of a car</td>
+                <td>Categorical (e.g., gender) or numerical (e.g., diameter)</td>
+                <td>N/A</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <h3>Exercise Section</h3>
+    <div class="button-container">
+        <button id="generateButton" onclick="generateQuestion()">Generate Question</button>
+        <button onclick="solveQuestion()">Solve Question</button>
+        <button>Download</button>
+        <button>Print</button>
+        <button>Email</button>
+    </div>
+    <div id="question"></div>
+    <div id="tags"></div>
+    <div id="answerContainer" class="answer-container" style="display:none;">
+        <div class="steps-container" id="userStepsContainer">
+            <!-- User input steps will be generated here -->
+        </div>
+        <div class="steps-container" id="solutionStepsContainer">
+            <!-- Solution steps will be generated here -->
+        </div>
+    </div>
+
     <script>
-        function flipColumn(columnIndex) {
-            var cards = document.querySelectorAll(`.column${columnIndex}`);
-            cards.forEach(card => {
-                card.classList.add('hidden');
+        function generateQuestion() {
+            const question = "Determine the mean lifetime of bearings in a production run based on the sample data provided.";
+            const terms = ["Population", "Sample", "Descriptive Statistics"];
+            
+            document.getElementById('question').innerText = question;
+
+            const tagsDiv = document.getElementById('tags');
+            tagsDiv.innerHTML = '';
+            terms.forEach(term => {
+                const tag = document.createElement('span');
+                tag.className = 'tags';
+                tag.innerText = term;
+                tagsDiv.appendChild(tag);
+            });
+
+            highlightTerms(terms);
+            sortTable(terms);
+
+            // Initialize user input text boxes
+            const userStepsContainer = document.getElementById('userStepsContainer');
+            userStepsContainer.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                const textarea = document.createElement('textarea');
+                textarea.placeholder = "Write your answer here...";
+                userStepsContainer.appendChild(textarea);
+            }
+            const addUserStepButton = document.createElement('button');
+            addUserStepButton.className = 'add-step-button';
+            addUserStepButton.textContent = '+ ADD NEW STEP';
+            addUserStepButton.onclick = () => addStep('userStepsContainer');
+            userStepsContainer.appendChild(addUserStepButton);
+
+            // Add ALL DONE? button and checkmark button
+            const allDoneButtonContainer = document.createElement('div');
+            allDoneButtonContainer.style.display = 'flex';
+            allDoneButtonContainer.style.alignItems = 'center';
+            
+            const allDoneButton = document.createElement('button');
+            allDoneButton.className = 'all-done-button';
+            allDoneButton.textContent = 'ALL DONE?';
+            allDoneButtonContainer.appendChild(allDoneButton);
+            
+            const checkButton = document.createElement('button');
+            checkButton.className = 'check-button';
+            checkButton.textContent = '✔';
+            checkButton.onmouseover = () => checkButton.style.backgroundColor = 'green';
+            checkButton.onmouseout = () => checkButton.style.backgroundColor = 'grey';
+            checkButton.onclick = () => {
+                allDoneButton.style.backgroundColor = '#FFA000'; // Change to gold color when clicked
+                checkButton.style.backgroundColor = '#FFA000'; // Change to gold color when clicked
+                allDoneButton.textContent = 'ALL DONE!'; // Change text to ALL DONE!
+                checkButton.style.display = 'none'; // Hide checkButton
+                addUserStepButton.style.display = 'none'; // Hide + ADD NEW STEP button
+                allDoneButton.style.width = '100%'; // Make ALL DONE! button take the place of + ADD NEW STEP button
+            };
+            allDoneButtonContainer.appendChild(checkButton);
+            
+            userStepsContainer.appendChild(allDoneButtonContainer);
+
+            document.getElementById('answerContainer').style.display = 'flex';
+            document.getElementById('solutionStepsContainer').innerHTML = '';
+
+            // Update the button text after the first click
+            document.getElementById('generateButton').textContent = 'Generate New Question';
+            
+            // Reset the ALL DONE! button color
+            const doneButtons = document.querySelectorAll('.done-button');
+            doneButtons.forEach(button => {
+                button.classList.remove('clicked');
+                button.style.backgroundColor = '#FFB700'; // Reset to original gold color
+            });
+
+            // Reset the check button display
+            const checkButtons = document.querySelectorAll('.check-button');
+            checkButtons.forEach(button => {
+                button.style.display = 'block'; // Ensure the check button is visible
+            });
+
+            // Reset the + ADD NEW STEP button display
+            const addStepButtons = document.querySelectorAll('.add-step-button');
+            addStepButtons.forEach(button => {
+                button.style.display = 'block'; // Ensure the + ADD NEW STEP button is visible
             });
         }
 
-        function flipCard(card) {
-            card.classList.toggle('hidden');
+        function solveQuestion() {
+            const correctAnswerSteps = [
+                "Step 1: Identify the sample data.",
+                "Step 2: Sum the lifetimes of all samples.",
+                "Step 3: Divide the sum by the number of samples."
+            ];
+            const solutionStepsContainer = document.getElementById('solutionStepsContainer');
+            solutionStepsContainer.innerHTML = '';
+
+            correctAnswerSteps.forEach(step => {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = step;
+                input.readOnly = true;
+                solutionStepsContainer.appendChild(input);
+            });
+
+            const doneButton = document.createElement('button');
+            doneButton.className = 'done-button';
+            doneButton.textContent = 'ALL DONE!';
+            doneButton.onclick = () => {
+                triggerSparkles(doneButton);
+                doneButton.classList.add('clicked'); // Change to darker shade of gold when clicked
+            };
+            solutionStepsContainer.appendChild(doneButton);
+
+            document.getElementById('answerContainer').style.display = 'flex';
+        }
+
+        function addStep(containerId) {
+            const container = document.getElementById(containerId);
+            const newStep = document.createElement(containerId === 'userStepsContainer' ? 'textarea' : 'input');
+            if (containerId === 'userStepsContainer') {
+                newStep.placeholder = "Write your answer here...";
+            } else {
+                newStep.type = 'text';
+                newStep.readOnly = true;
+                newStep.placeholder = "Correct answer will appear here...";
+            }
+            newStep.style.height = '100px';
+            newStep.style.marginBottom = '10px';
+            newStep.style.padding = '10px';
+            newStep.style.boxSizing = 'border-box';
+            container.insertBefore(newStep, container.querySelector('.add-step-button'));
+        }
+
+        function highlightTerms(terms) {
+            const rows = document.querySelectorAll('table tbody tr');
+            rows.forEach(row => {
+                const term = row.getAttribute('data-term');
+                if (terms.includes(term)) {
+                    row.classList.add('highlight');
+                } else {
+                    row.classList.remove('highlight');
+                }
+            });
+        }
+
+        function sortTable(terms) {
+            const table = document.getElementById('referenceTable');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            const sortedRows = rows.sort((a, b) => {
+                const termA = a.getAttribute('data-term');
+                const termB = b.getAttribute('data-term');
+                if (terms.includes(termA) && terms.includes(termB)) {
+                    return termA.localeCompare(termB);
+                }
+                if (terms.includes(termA)) return -1;
+                if (terms.includes(termB)) return 1;
+                return termA.localeCompare(termB);
+            });
+
+            sortedRows.forEach(row => tbody.appendChild(row));
+        }
+
+        function triggerSparkles(button) {
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                document.body.appendChild(sparkle);
+
+                const rect = button.getBoundingClientRect();
+                sparkle.style.left = rect.left + Math.random() * rect.width + 'px';
+                sparkle.style.top = rect.top + Math.random() * rect.height + 'px';
+                sparkle.style.animation = `sparkle ${Math.random() * 0.5 + 0.5}s ease-out`;
+                sparkle.style.position = 'fixed';
+
+                sparkle.addEventListener('animationend', () => sparkle.remove());
+            }
         }
     </script>
-</head>
-<body>
-    <div class="page-title">Probability and Statistics Civil Engineering Reference Guide</div>
-    <div class="feedback-container">
-        <textarea class="feedback-textbox" placeholder="Enter your feedback here..."></textarea>
-    </div>
 
-    <div class="row">
-        <div class="column-title" onclick="flipColumn(1)">Term/Concept</div>
-        <div class="column-title" onclick="flipColumn(2)">Definition</div>
-        <div class="column-title" onclick="flipColumn(3)">Notation</div>
-        <div class="column-title" onclick="flipColumn(4)">Use Case</div>
-        <div class="column-title" onclick="flipColumn(5)">Civil Engineering Subdomain</div>
-    </div>
-
-    <div class="row">
-        <button class="card column1" onclick="flipCard(this)">Random Variable</button>
-        <button class="card column2 hidden" onclick="flipCard(this)">A variable that takes on different values based on the outcomes of a random phenomenon.</button>
-        <button class="card column3 hidden" onclick="flipCard(this)">\( X \) for both discrete and continuous random variables.</button>
-        <button class="card column4 hidden" onclick="flipCard(this)">Example: The height of a person.</button>
-        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
-    </div>
-
-    <div class="row">
-        <button class="card column1" onclick="flipCard(this)">PMF (Probability Mass Function)</button>
-        <button class="card column2 hidden" onclick="flipCard(this)">A function that gives the probability that a discrete random variable is exactly equal to some value.</button>
-        <button class="card column3 hidden" onclick="flipCard(this)">\( P(X=x) \)</button>
-        <button class="card column4 hidden" onclick="flipCard(this)">Example: Finding the probability of rolling a 3 on a fair six-sided die.</button>
-        <button class="card column5 hidden" onclick="flipCard(this)">Probability</button>
-    </div>
-
-    <div class="row">
-        <button class="card column1" onclick="flipCard(this)">PDF (Probability Density Function)</button>
-        <button class="card column2 hidden" onclick="flipCard(this)">A function that describes the likelihood of a continuous random variable to take on a particular value.</button>
-        <button class="card column3 hidden" onclick="flipCard(this)">\( f(x) \)</button>
-        <button class="card column4 hidden" onclick="flipCard(this)">Example: Determining the likelihood of a measurement falling within a specific range in a normal distribution.</button>
-        <button class="card column5 hidden" onclick="flipCard(this)">Probability</button>
-    </div>
-
-    <div class="row">
-        <button class="card column1" onclick="flipCard(this)">CDF (Cumulative Distribution Function)</button>
-        <button class="card column2 hidden" onclick="flipCard(this)">A function that gives the probability that a random variable is less than or equal to a certain value.</button>
-        <button class="card column3 hidden" onclick="flipCard(this)">\( F(x) = P(X \leq x) \)</button>
-        <button class="card column4 hidden" onclick="flipCard(this)">Example: Probability of scoring below 80 in an exam.</button>
-        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
-    </div>
-
-    <div class="row">
-        <button class="card column1" onclick="flipCard(this)">Mean</button>
-        <button class="card column2 hidden" onclick="flipCard(this)">The average value of a set of numbers or a random variable.</button>
-        <button class="card column3 hidden" onclick="flipCard(this)">\( \mu \text{ or } E(X) \)</button>
-        <button class="card column4 hidden" onclick="flipCard(this)">Example: Average height of students in a class.</button>
-        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
-    </div>
-
-    <div class="row">
-        <button class="card column1" onclick="flipCard(this)">Variance</button>
-        <button class="card column2 hidden" onclick="flipCard(this)">A measure of the dispersion or spread of a set of values or a random variable.</button>
-        <button class="card column3 hidden" onclick="flipCard(this)">\( \sigma^2 \text{ or } Var(X) \)</button>
-        <button class="card column4 hidden" onclick="flipCard(this)">Example: Variability in test scores in a class.</button>
-        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
-    </div>
-
-    <div class="row">
-        <button class="card column1" onclick="flipCard(this)">Standard Deviation</button>
-        <button class="card column2 hidden" onclick="flipCard(this)">The square root of the variance, indicating the average amount by which values differ from the mean.</button>
-        <button class="card column3 hidden" onclick="flipCard(this)">\( \sigma \text{ or } SD(X) \)</button>
-        <button class="card column4 hidden" onclick="flipCard(this)">Example: The standard deviation of weights of a group of people.</button>
-        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
-    </div>
-
-    <div class="row">
-        <button class="card column1" onclick="flipCard(this)">Covariance</button>
-        <button class="card column2 hidden" onclick="flipCard(this)">A measure of the joint variability of two random variables.</button>
-        <button class="card column3 hidden" onclick="flipCard(this)">\( Cov(X, Y) \)</button>
-        <button class="card column4 hidden" onclick="flipCard(this)">Example: Covariance between height and weight of individuals.</button>
-        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
-    </div>
-
-    <div class="row">
-        <button class="card column1" onclick="flipCard(this)">Correlation</button>
-        <button class="card column2 hidden" onclick="flipCard(this)">A standardized measure of the relationship between two random variables, ranging from -1 to 1.</button>
-        <button class="card column3 hidden" onclick="flipCard(this)">\( \rho \text{ or } Corr(X, Y) \)</button>
-        <button class="card column4 hidden" onclick="flipCard(this)">Example: Correlation between study hours and exam scores.</button>
-        <button class="card column5 hidden" onclick="flipCard(this)">Statistics</button>
-    </div>
-
-    <div class="problem-container">
-        <div class="problem-title">Problem of the Day</div>
-        <div class="card">The height of students in a school is normally distributed with a mean of 65 inches and a standard deviation of 3 inches. What is the probability that a randomly selected student is taller than 68 inches?</div>
-        <div class="steps-title">Steps to Solve the Problem</div>
-        <textarea class="steps-textbox" placeholder="Step 1"></textarea>
-        <textarea class="steps-textbox" placeholder="Step 2"></textarea>
-        <textarea class="steps-textbox" placeholder="Step 3"></textarea>
-        <textarea class="steps-textbox" placeholder="Step 4"></textarea>
-        <textarea class="steps-textbox" placeholder="Step 5"></textarea>
-    </div>
 </body>
 </html>
