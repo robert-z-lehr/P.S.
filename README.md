@@ -1,4 +1,4 @@
-# [Reference-Probability-Statistics](https://robert-z-lehr.github.io/Reference-Probability-Statistics/)
+# [Reference-Probability-Statistics](https://robert-z-lehr.github.io/PhD-Literature-Review/)
 Reference notes for the CE311S class on Probability and Statistics.
 *Taught by*: Dr. Kara Kockelman
 ---
