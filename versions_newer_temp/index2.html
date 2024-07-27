@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.S. - Applied Probability and Statistics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .divider {
+            border-top: 2px solid #000;
+            margin: 20px 0;
+        }
+        .table-container {
+            max-height: 200px; /* Adjust this height as needed */
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #FFA000; /* Darker richer gold color */
+        }
+        .tags {
+            display: inline-block;
+            background-color: #e0e0e0;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        .answer-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .steps-container {
+            width: 48%;
+        }
+        .steps-container textarea, .steps-container input {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .add-step-button, .all-done-button, .check-button {
+            display: block;
+            padding: 10px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .add-step-button {
+            width: 100%;
+            background-color: #4CAF50;
+        }
+        .add-step-button:hover {
+            background-color: #45a049;
+        }
+        .all-done-button {
+            width: calc(100% - 50px);
+            background-color: purple;
+        }
+        .check-button {
+            width: 40px;
+            background-color: grey;
+        }
+        .all-done-button:hover {
+            background-color: #9b30ff;
+        }
+        .check-button:hover {
+            background-color: green;
+        }
+        .done-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #FFB700; /* Lighter gold color */
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .done-button:hover {
+            background-color: #FFA000;
+        }
+        .done-button.clicked {
+            background-color: #FFA000;
+        }
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #FFB700 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>P.S.</h1>
+    <h2>P.S. is an applied Probability and Statistics resource used to give you a comprehensive education for all the tools and techniques you will need to use and know to tackle any civil engineering problem.</h2>
+
+    <div class="divider"></div>
+
+    <div class="table-container" id="tableContainer">
+        <table id="referenceTable">
+            <thead>
+                <tr>
+                    <th>Term/Concept</th>
+                    <th>Description</th>
+                    <th>Notation/Symbols</th>
+                    <th>Use Cases</th>
+                    <th>Scopes and Boundaries</th>
+                    <th>Relevant Formulas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-term="Descriptive Statistics">
+                    <td>Descriptive Statistics</td>
+                    <td>Methods for summarizing and describing important features of the data.</td>
+                    <td>N/A</td>
+                    <td>Calculating mean, standard deviation, creating histograms</td>
+                    <td>Focuses on data summarization without generalization</td>
+                    <td>Mean: \( \bar{x} = \frac{\sum x}{n} \)</td>
+                </tr>
+                <tr data-term="Inferential Statistics">
+                    <td>Inferential Statistics</td>
+                    <td>Techniques for generalizing from a sample to a population.</td>
+                    <td>N/A</td>
+                    <td>Estimating population parameters based on sample data</td>
+                    <td>Relies on probability theory to make inferences</td>
+                    <td>Confidence Interval: \( \bar{x} \pm t \frac{s}{\sqrt{n}} \)</td>
+                </tr>
+                <tr data-term="Population">
+                    <td>Population</td>
+                    <td>A well-defined collection of objects of interest in a study.</td>
+                    <td>N/A</td>
+                    <td>All gelatin capsules produced during a period</td>
+                    <td>Involves all objects in the specified group</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Sample">
+                    <td>Sample</td>
+                    <td>A subset of the population selected in some prescribed manner.</td>
+                    <td>N/A</td>
+                    <td>Sample of bearings to check manufacturing specifications</td>
+                    <td>Must be representative of the population</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Variable">
+                    <td>Variable</td>
+                    <td>A characteristic whose value may change from one object to another in the population.</td>
+                    <td>x, y, z</td>
+                    <td>Number of visits to a website, braking distance of a car</td>
+                    <td>Categorical (e.g., gender) or numerical (e.g., diameter)</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Flexural Strength">
+                    <td>Flexural Strength</td>
+                    <td>A measure of the ability to resist failure in bending.</td>
+                    <td>MPa (MegaPascal)</td>
+                    <td>Estimating the average value of flexural strength for all beams made using specific methods.</td>
+                    <td>Focus on high-performance concrete using superplasticizers and certain binders.</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Confidence Interval">
+                    <td>Confidence Interval</td>
+                    <td>An interval estimate providing a range within which the population parameter is expected to lie with high confidence.</td>
+                    <td>N/A</td>
+                    <td>Estimating population mean strength.</td>
+                    <td>Provides a range of values for the population parameter.</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Lower Prediction Bound">
+                    <td>Lower Prediction Bound</td>
+                    <td>A value providing a lower bound for predicting the value of a single future observation.</td>
+                    <td>N/A</td>
+                    <td>Predicting the flexural strength of a single beam.</td>
+                    <td>Used for individual predictions.</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Point Estimation">
+                    <td>Point Estimation</td>
+                    <td>A single value estimate of a population parameter.</td>
+                    <td>N/A</td>
+                    <td>Used in inferential statistics to estimate population parameters.</td>
+                    <td>Focus on estimating a single value for a population parameter.</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Hypothesis Testing">
+                    <td>Hypothesis Testing</td>
+                    <td>A procedure for testing a claim about a population parameter.</td>
+                    <td>N/A</td>
+                    <td>Determining if there is enough evidence to reject a null hypothesis.</td>
+                    <td>Involves making decisions based on sample data.</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Conceptual or Hypothetical Population">
+                    <td>Conceptual or Hypothetical Population</td>
+                    <td>A population consisting of all possible measurements that might be made under similar experimental conditions.</td>
+                    <td>N/A</td>
+                    <td>Used in problem situations where questions are fit into the framework of inferential statistics by conceptualizing a population.</td>
+                    <td>Focus on potential measurements rather than existing ones.</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Deductive Reasoning (Probability)">
+                    <td>Deductive Reasoning (Probability)</td>
+                    <td>Reasoning from the population to the sample.</td>
+                    <td>N/A</td>
+                    <td>Used in probability problems where properties of the population are assumed known.</td>
+                    <td>Involves making assumptions about the population.</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Inductive Reasoning (Inferential Statistics)">
+                    <td>Inductive Reasoning (Inferential Statistics)</td>
+                    <td>Reasoning from the sample to the population.</td>
+                    <td>N/A</td>
+                    <td>Used in inferential statistics to draw conclusions about the population based on sample data.</td>
+                    <td>Involves drawing conclusions from sample information.</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Spatiotemporal Analysis">
+                    <td>Spatiotemporal Analysis</td>
+                    <td>Analyzing data that has spatial and temporal components.</td>
+                    <td>N/A</td>
+                    <td>Used in forest health monitoring systems and other applications.</td>
+                    <td>Involves both spatial and temporal data.</td>
+                    <td>N/A</td>
+                </tr>
+                <tr data-term="Extreme Value Theory">
+                    <td>Extreme Value Theory</td>
+                    <td>A branch of statistics dealing with the extreme deviations from the median of probability distributions.</td>
+                    <td>N/A</td>
+                    <td>Modeling extremes related to world records in athletics.</td>
+                    <td>Focus on extreme values.</td>
+                    <td>N/A</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>Exercise Section</h3>
+    <div class="button-container">
+        <button id="generateButton" onclick="generateQuestion()">Generate Question</button>
+        <button onclick="solveQuestion()">Solve Question</button>
+        <button>Download</button>
+        <button>Print</button>
+        <button>Email</button>
+    </div>
+    <div id="question"></div>
+    <div id="tags"></div>
+    <div id="answerContainer" class="answer-container" style="display:none;">
+        <div class="steps-container" id="userStepsContainer">
+            <!-- User input steps will be generated here -->
+        </div>
+        <div class="steps-container" id="solutionStepsContainer">
+            <!-- Solution steps will be generated here -->
+        </div>
+    </div>
+
+    <script>
+        function generateQuestion() {
+            const question = "Determine the mean lifetime of bearings in a production run based on the sample data provided.";
+            const terms = ["Population", "Sample", "Descriptive Statistics"];
+            
+            document.getElementById('question').innerText = question;
+
+            const tagsDiv = document.getElementById('tags');
+            tagsDiv.innerHTML = '';
+            terms.forEach(term => {
+                const tag = document.createElement('span');
+                tag.className = 'tags';
+                tag.innerText = term;
+                tagsDiv.appendChild(tag);
+            });
+
+            highlightTerms(terms);
+            sortTable(terms);
+
+            // Scroll to top of the table container
+            document.getElementById('tableContainer').scrollTop = 0;
+
+            // Initialize user input text boxes
+            const userStepsContainer = document.getElementById('userStepsContainer');
+            userStepsContainer.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                const textarea = document.createElement('textarea');
+                textarea.placeholder = "Write your answer here...";
+                userStepsContainer.appendChild(textarea);
+            }
+            const addUserStepButton = document.createElement('button');
+            addUserStepButton.className = 'add-step-button';
+            addUserStepButton.textContent = '+ ADD NEW STEP';
+            addUserStepButton.onclick = () => addStep('userStepsContainer');
+            userStepsContainer.appendChild(addUserStepButton);
+
+            // Add ALL DONE? button and checkmark button
+            const allDoneButtonContainer = document.createElement('div');
+            allDoneButtonContainer.style.display = 'flex';
+            allDoneButtonContainer.style.alignItems = 'center';
+            
+            const allDoneButton = document.createElement('button');
+            allDoneButton.className = 'all-done-button';
+            allDoneButton.textContent = 'ALL DONE?';
+            allDoneButtonContainer.appendChild(allDoneButton);
+            
+            const checkButton = document.createElement('button');
+            checkButton.className = 'check-button';
+            checkButton.textContent = '✔';
+            checkButton.onmouseover = () => checkButton.style.backgroundColor = 'green';
+            checkButton.onmouseout = () => checkButton.style.backgroundColor = 'grey';
+            checkButton.onclick = () => {
+                allDoneButton.style.backgroundColor = '#FFA000'; // Change to gold color when clicked
+                checkButton.style.backgroundColor = '#FFA000'; // Change to gold color when clicked
+                allDoneButton.textContent = 'ALL DONE!'; // Change text to ALL DONE!
+                checkButton.style.display = 'none'; // Hide checkButton
+                addUserStepButton.style.display = 'none'; // Hide + ADD NEW STEP button
+                allDoneButton.style.width = '100%'; // Make ALL DONE! button take the place of + ADD NEW STEP button
+            };
+            allDoneButtonContainer.appendChild(checkButton);
+            
+            userStepsContainer.appendChild(allDoneButtonContainer);
+
+            document.getElementById('answerContainer').style.display = 'flex';
+            document.getElementById('solutionStepsContainer').innerHTML = '';
+
+            // Update the button text after the first click
+            document.getElementById('generateButton').textContent = 'Generate New Question';
+            
+            // Reset the ALL DONE! button color
+            const doneButtons = document.querySelectorAll('.done-button');
+            doneButtons.forEach(button => {
+                button.classList.remove('clicked');
+                button.style.backgroundColor = '#FFB700'; // Reset to original gold color
+            });
+
+            // Reset the check button display
+            const checkButtons = document.querySelectorAll('.check-button');
+            checkButtons.forEach(button => {
+                button.style.display = 'block'; // Ensure the check button is visible
+            });
+
+            // Reset the + ADD NEW STEP button display
+            const addStepButtons = document.querySelectorAll('.add-step-button');
+            addStepButtons.forEach(button => {
+                button.style.display = 'block'; // Ensure the + ADD NEW STEP button is visible
+            });
+        }
+
+        function solveQuestion() {
+            const correctAnswerSteps = [
+                "Step 1: Identify the sample data.",
+                "Step 2: Sum the lifetimes of all samples.",
+                "Step 3: Divide the sum by the number of samples."
+            ];
+            const solutionStepsContainer = document.getElementById('solutionStepsContainer');
+            solutionStepsContainer.innerHTML = '';
+
+            correctAnswerSteps.forEach(step => {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = step;
+                input.readOnly = true;
+                solutionStepsContainer.appendChild(input);
+            });
+
+            const doneButton = document.createElement('button');
+            doneButton.className = 'done-button';
+            doneButton.textContent = 'ALL DONE!';
+            doneButton.onclick = () => {
+                triggerSparkles(doneButton);
+                doneButton.classList.add('clicked'); // Change to darker shade of gold when clicked
+            };
+            solutionStepsContainer.appendChild(doneButton);
+
+            document.getElementById('answerContainer').style.display = 'flex';
+        }
+
+        function addStep(containerId) {
+            const container = document.getElementById(containerId);
+            const newStep = document.createElement(containerId === 'userStepsContainer' ? 'textarea' : 'input');
+            if (containerId === 'userStepsContainer') {
+                newStep.placeholder = "Write your answer here...";
+            } else {
+                newStep.type = 'text';
+                newStep.readOnly = true;
+                newStep.placeholder = "Correct answer will appear here...";
+            }
+            newStep.style.height = '100px';
+            newStep.style.marginBottom = '10px';
+            newStep.style.padding = '10px';
+            newStep.style.boxSizing = 'border-box';
+            container.insertBefore(newStep, container.querySelector('.add-step-button'));
+        }
+
+        function highlightTerms(terms) {
+            const rows = document.querySelectorAll('table tbody tr');
+            rows.forEach(row => {
+                const term = row.getAttribute('data-term');
+                if (terms.includes(term)) {
+                    row.classList.add('highlight');
+                } else {
+                    row.classList.remove('highlight');
+                }
+            });
+        }
+
+        function sortTable(terms) {
+            const table = document.getElementById('referenceTable');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            const sortedRows = rows.sort((a, b) => {
+                const termA = a.getAttribute('data-term');
+                const termB = b.getAttribute('data-term');
+                if (terms.includes(termA) && terms.includes(termB)) {
+                    return termA.localeCompare(termB);
+                }
+                if (terms.includes(termA)) return -1;
+                if (terms.includes(termB)) return 1;
+                return termA.localeCompare(termB);
+            });
+
+            sortedRows.forEach(row => tbody.appendChild(row));
+        }
+
+        function triggerSparkles(button) {
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                document.body.appendChild(sparkle);
+
+                const rect = button.getBoundingClientRect();
+                sparkle.style.left = rect.left + Math.random() * rect.width + 'px';
+                sparkle.style.top = rect.top + Math.random() * rect.height + 'px';
+                sparkle.style.animation = `sparkle ${Math.random() * 0.5 + 0.5}s ease-out`;
+                sparkle.style.position = 'fixed';
+
+                sparkle.addEventListener('animationend', () => sparkle.remove());
+            }
+        }
+    </script>
+
+</body>
+</html>
