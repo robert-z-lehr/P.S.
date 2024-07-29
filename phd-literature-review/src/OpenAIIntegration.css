@@ -1,0 +1,40 @@
+textarea::placeholder {
+    color: #ccc;
+  }
+  
+  .expandable-table-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .expandable-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-left: 10px;
+  }
+  
+  .expandable-table th, .expandable-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .expandable-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+  }
+  
+  .highlighted {
+    background-color: #d3d3d3;
+  }
+  
+  body {
+    background-color: #f0f0f5;
+    color: #333;
+  }
+  

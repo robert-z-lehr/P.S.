@@ -1,47 +1,80 @@
-// src/components/OpenAIIntegration.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../OpenAIIntegration.css';
 
-const OpenAIIntegration = () => {
-  const [question, setQuestion] = useState('');
-  const [answer, setAnswer] = useState('');
-  const [userAnswer, setUserAnswer] = useState('');
+const OpenAIIntegration = ({ question }) => {
+  const [steps, setSteps] = useState([""]);
+  const [completedAnswerSteps, setCompletedAnswerSteps] = useState([]);
+  const [done, setDone] = useState(false);
 
-  const fetchQuestion = async () => {
-    const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
-      prompt: 'Generate a probability question',
-      max_tokens: 150,
-    }, {
-      headers: {
-        'Authorization': `Bearer YOUR_OPENAI_API_KEY`
-      }
-    });
-    setQuestion(response.data.choices[0].text);
+  const addStep = () => {
+    setSteps([...steps, ""]);
   };
 
-  const checkAnswer = async () => {
-    const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
-      prompt: `Check if the following answer is correct for the question: ${question} Answer: ${userAnswer}`,
-      max_tokens: 50,
-    }, {
-      headers: {
-        'Authorization': `Bearer YOUR_OPENAI_API_KEY`
-      }
-    });
-    setAnswer(response.data.choices[0].text);
+  const updateStep = (index, value) => {
+    const newSteps = [...steps];
+    newSteps[index] = value;
+    setSteps(newSteps);
+  };
+
+  const generateNextStep = async () => {
+    try {
+      const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+        prompt: `Solve the following problem step by step: ${question}`,
+        max_tokens: 150
+      }, {
+        headers: {
+          'Authorization': `Bearer YOUR_OPENAI_API_KEY`
+        }
+      });
+
+      setCompletedAnswerSteps([...completedAnswerSteps, response.data.choices[0].text.trim()]);
+    } catch (error) {
+      console.error('Error generating step:', error);
+    }
+  };
+
+  const handleDone = () => {
+    setDone(true);
+  };
+
+  const handleStartOver = () => {
+    setSteps([""]);
+    setCompletedAnswerSteps([]);
+    setDone(false);
   };
 
   return (
     <div>
-      <button onClick={fetchQuestion}>Get Question</button>
-      <div>{question}</div>
-      <input
-        type="text"
-        value={userAnswer}
-        onChange={(e) => setUserAnswer(e.target.value)}
-      />
-      <button onClick={checkAnswer}>Check Answer</button>
-      <div>{answer}</div>
+      <h3>{question}</h3>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ width: '45%' }}>
+          <h4>Step-by-Step Answer</h4>
+          {steps.map((step, index) => (
+            <textarea
+              key={index}
+              value={step}
+              placeholder={index === 0 ? "Write the first step" : "Write the next step"}
+              onChange={(e) => updateStep(index, e.target.value)}
+              style={{ width: '100%', marginBottom: '10px', color: step === "" ? '#ccc' : '#000' }}
+            />
+          ))}
+          <button onClick={addStep}>Add Step</button>
+          <button onClick={handleDone} style={{ backgroundColor: done ? 'gold' : '' }}>
+            {done ? "✓ Done!" : "Done!"}
+          </button>
+          <button onClick={handleStartOver}>Start Over</button>
+        </div>
+        <div style={{ width: '45%' }}>
+          <h4>Completed Answer</h4>
+          <button onClick={generateNextStep}>
+            {completedAnswerSteps.length === 0 ? "Generate 1st step of completed answer" : "Generate next step of the completed answer"}
+          </button>
+          {completedAnswerSteps.map((step, index) => (
+            <textarea key={index} value={step} readOnly style={{ width: '100%', marginTop: '10px' }} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 
-function InteractiveButtons() {
-  const [count, setCount] = useState(0);
+const InteractiveButtons = ({ setQuestion }) => {
+  const generateQuestion = () => {
+    // Replace this with actual question generation logic
+    const question = "What is the mean of the following data set: [1, 2, 3, 4, 5]?";
+    setQuestion(question);
+  };
 
   return (
     <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <button onClick={generateQuestion} style={{ fontSize: '16px', padding: '10px 20px' }}>Generate Random Question</button>
     </div>
   );
-}
+};
 
 export default InteractiveButtons;
