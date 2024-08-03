@@ -1,17 +1,5 @@
 # [P.S.](https://robert-z-lehr.github.io/PhD-Literature-Review/)
-Reference notes for the CE311S class on Probability and Statistics.
-*Taught by*: Dr. Kara Kockelman
----
 
-## Book:
-*Probability and Statistics for Engineering and the Sciences - eighth edition*
-*by*: Jay L. Devore
----
+P.S. is a reference tool that leverages Generative AI to act as a personalized mentor, assisting students in thoroughly mastering a domain of knowledge. Currently in development and pilot testing, it is being used to teach applied probability and statistics to engineers and scientists.
 
-### Notes:
-| Concept/Term/Jargon          | Definition                                                                                             | Use Case / Example                                                   | Relevant Formula(s)                                                                 | Relevant Probability Distribution(s)         | Sub-Domain in Civil Engineering       | Visual/Image                           |
-|------------------------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|----------------------------------------------|--------------------------------------|--------------------------------------|
-| Union of Events              | The probability of either of two events occurring                                                     | Estimating the probability of either of two structural failures     | $$ P(A \cup B) = P(A) + P(B) - P(A \cap B) $$                                       | Binomial, Poisson, Normal                    | Structural Engineering                | ![Union of Events](path_to_image)     |
-| Intersection of Events       | The probability of both events occurring simultaneously                                               | Calculating the joint probability of both load and material failures | $$ P(A \cap B) = P(A) \cdot P(B) $$                                                | Binomial, Poisson                            | Structural Engineering                | ![Intersection of Events](path_to_image) |
-
-
+Complementing this tool is A.N.N.A., the Analogous Neural Network Advisor, which connects to the OpenAI API to produce curated analogies, metaphors, similes, parables, and aphorisms. Understanding complex content often requires relatable examples, and these figures of speech provide countless clear explanations related to the material being taught.
