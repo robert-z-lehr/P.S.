@@ -1,4 +1,4 @@
-# [P.S.](https://robert-z-lehr.github.io/PhD-Literature-Review/)
+# [P.S.](https://robert-z-lehr.github.io/P.S./)
 
 P.S. is a reference tool that leverages Generative AI to act as a personalized mentor, assisting students in thoroughly mastering a domain of knowledge. Currently in development and pilot testing, it is being used to teach applied probability and statistics to engineers and scientists.
 
